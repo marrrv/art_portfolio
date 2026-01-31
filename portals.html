@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portals - Marianna Vrakas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button class="menu-toggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <header class="top-title">
+        <a href="index.html" class="top-logo">Marianna Vrakas</a>
+    </header>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link nav-home">Home</a></li>
+                <li><a href="coordinates.html" class="nav-link">Coordinates</a></li>
+                <li><a href="portals.html" class="nav-link">Portals</a></li>
+                <li><a href="pigments.html" class="nav-link">Pigments</a></li>
+                <li><a href="mediterranean.html" class="nav-link">Mediterranean</a></li>
+                <li><a href="about.html" class="nav-link">Bio</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="gallery-section">
+            <h1 class="gallery-title portals-title">Portals</h1>
+            
+            <div class="gallery-controls">
+                <button id="prevBtn" class="gallery-button">&lt;</button>
+                <div class="gallery-container">
+                    <img id="galleryImage" src="images/water portal .jpg" alt="Gallery image" class="gallery-image">
+                </div>
+                <button id="nextBtn" class="gallery-button">&gt;</button>
+            </div>
+
+            <div class="gallery-metadata" id="metadata">
+                <p class="work-title" id="imageTitle">Water Portal</p>
+                <p class="work-metadata" id="imageYear">Oil on canvas</p>
+                <p class="work-metadata" id="imageMedium">2022</p>
+                <p class="work-metadata" id="imageDimensions" style="display: none;">Dimensions available upon request</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Marianna Vrakas</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navbar = document.querySelector('.navbar');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navbar.classList.toggle('open');
+        });
+
+        // Close menu when clicking a nav link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navbar.classList.remove('open');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navbar.contains(e.target) && !menuToggle.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                navbar.classList.remove('open');
+            }
+        });
+    </script>
+    <script src="gallery.js"></script>
+    <script>
+        // Gallery images data
+        const images = [
+            {
+                src: "images/water portal .jpg",
+                title: "Water Portal",
+                medium: "Oil on canvas",
+                year: "2022",
+                dimensions: "151 cm x 181 cm"
+            },
+            {
+                src: "images/confluence.jpg",
+                title: "Confluence",
+                medium: "Oil on canvas",
+                year: "2022",
+                dimensions: "61 cm x 76.2 cm"
+            },
+            {
+                src: "images/travelling perspectives.jpg",
+                title: "Travelling Perspectives",
+                medium: "Oil on canvas",
+                year: "2022",
+                dimensions: "76.5 cm x 182 cm<br><br>traveling perspectives--<br>same space, conversation starting<br>movement and motion, motion and sound<br>rhythm that dances dependent on both.<br>You can sit and draw a cloud, but the land will change<br>each perspective is shielded to its own space.<br><br>verbal communication is ambiguous,<br>and the silence is transient.<br>As the rapid disappearance occurs,<br>a new window is unlatched.<br>The window of an established perspective<br>whose presence is ever-present<br><br>touch, smell, noise, and taste<br>it's essential to look at all<br>especially, the sight that prevails."
+            }
+        ];
+
+        // Initialize gallery with preloading
+        new Gallery(images);
+    </script>
+</body>
+</html>
